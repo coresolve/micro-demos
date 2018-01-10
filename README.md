@@ -15,7 +15,20 @@ Then you can exec into the pod.
 
 `kubectl exec -n micro-demos -ti micro-demos /bin/bash`
 
+cd into /root
+and run `./setup.sh` and then maybe try the some of the other micro-demos
+
 and start playing with micro-demos.
+
+to remove everything do
+
+`kubectl delete -f https://raw.githubusercontent.com/coresolve/micro-demos/master/k8s/micro-demos.yaml`
+
+also delete the demos ns. 
+
+`kubectl delete ns demos`
+
+
 
 TODO:
 Need to make a repo of the micro-demos for tectonic and pull that instead of the tarball that I am pulling in now.
