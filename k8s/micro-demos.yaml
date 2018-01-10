@@ -1,0 +1,61 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    name: micro-demos
+    selfLink: /api/v1/namespaces/micro-demos
+  spec:
+    finalizers:
+    - kubernetes
+- apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    creationTimestamp: null
+    name: micro-demos
+    namespace: micro-demos
+    selfLink: /api/v1/namespaces/micro-demos/serviceaccounts/micro-demos
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: micro-demos
+    selfLink: /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/micro-demos
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: cluster-admin
+  subjects:
+  - kind: ServiceAccount
+    name: micro-demos
+    namespace: micro-demos
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: null
+    labels:
+      run: micro-demos
+    name: micro-demos
+    namespace: micro-demos
+    selfLink: /api/v1/namespaces/micro-demos/pods/micro-demos
+  spec:
+    containers:
+    - image: quay.io/dcooley/micro-demos:master
+      imagePullPolicy: Always
+      name: micro-demos
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+    dnsPolicy: ClusterFirst
+    restartPolicy: Never
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: micro-demos
+    serviceAccountName: micro-demos
+    terminationGracePeriodSeconds: 30
+  status:
+    phase: Pending
+    qosClass: BestEffort
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
