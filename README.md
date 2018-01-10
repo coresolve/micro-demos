@@ -1,3 +1,5 @@
+[![Docker Repository on Quay](https://quay.io/repository/dcooley/micro-demos/status "Docker Repository on Quay")](https://quay.io/repository/dcooley/micro-demos)
+
 This can be used to run micro-demos inside a pod inside your kube cluster.
 
 Run it like this:
